@@ -1,0 +1,6 @@
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/CalculatorEndpoint.java
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/CalculatorServiceImpl.java
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/HalfCalculatorServiceImpl.java
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/CalculatorApplication.java
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/CalculatorService.java
+/root/gopath/src/github.com/ServiceComb/ServiceComb-Java-Chassis/samples/bmi/calculator/src/main/java/io/servicecomb/samples/bmi/CalculatorRestEndpoint.java
