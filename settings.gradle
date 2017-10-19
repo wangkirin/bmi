@@ -1,0 +1,6 @@
+rootProject.name = 'bmi'
+include ':bmi-calculator'
+include ':webapp'
+
+project(':bmi-calculator').projectDir = "$rootDir/calculator" as File
+project(':webapp').projectDir = "$rootDir/webapp" as File
