@@ -27,12 +27,13 @@
 
   <groupId>io.servicecomb.samples</groupId>
   <artifactId>bmi</artifactId>
-  <version>0.3.0</version>
+  <version>0.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>calculator</module>
     <module>webapp</module>
+    <module>docker-build-config</module>
   </modules>
 
   <name>bmi</name>
@@ -43,6 +44,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <java-chassis.version>${project.version}</java-chassis.version>
+    <cse.version>2.1.14</cse.version>
   </properties>
 
   <dependencyManagement>
@@ -59,7 +61,126 @@
         <artifactId>log4j-web</artifactId>
         <version>2.8.2</version>
       </dependency>
+      <dependency>
+        <groupId>io.servicecomb.samples</groupId>
+        <artifactId>calculator</artifactId>
+        <version>0.4.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>io.servicecomb.samples</groupId>
+        <artifactId>webapp</artifactId>
+        <version>0.4.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>io.servicecomb.samples</groupId>
+        <artifactId>docker-build-config</artifactId>
+        <version>0.4.0-SNAPSHOT</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.commonjava.maven.plugins</groupId>
+          <artifactId>directory-maven-plugin</artifactId>
+          <version>0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>com.github.odavid.maven.plugins</groupId>
+          <artifactId>mixin-maven-plugin</artifactId>
+          <version>0.1-alpha-39</version>
+          <extensions>true</extensions>
+        </plugin>
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>0.20.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>HuaweiCloud</id>
+      <!--
+      The dependencies of huawei CSE which provides the commercial features in huawei cloud.
+      Please use this profile if you want to deploy the application into huawei cloud.
+      -->
+
+      <dependencies>
+        <dependency>
+          <groupId>com.huawei.paas.cse</groupId>
+          <artifactId>foundation-auth</artifactId>
+          <version>${cse.version}</version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-log4j12</artifactId>
+            </exclusion>
+          </exclusions>
+        </dependency>
+        <dependency>
+          <groupId>com.huawei.paas.cse</groupId>
+          <artifactId>foundation-config-cc</artifactId>
+          <version>${cse.version}</version>
+        </dependency>
+      </dependencies>
+
+      <repositories>
+        <repository>
+          <id>huawei_cloud_cse_dependencies</id>
+          <name>huawei_cloud_cse_dependencies</name>
+          <url>http://cse.servicecomb.io/maven</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>huawei_cloud_cse_dependencies</id>
+          <name>huawei_cloud_cse_dependencies</name>
+          <url>http://cse.servicecomb.io/maven</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <artifactId>maven-antrun-plugin</artifactId>
+              <version>1.8</version>
+              <executions>
+                <execution>
+                  <phase>compile</phase>
+                  <goals>
+                    <goal>run</goal>
+                  </goals>
+                  <configuration>
+                    <tasks>
+                      <copy file="../etc/microservice/${project.name}.yaml" tofile="${basedir}/target/classes/microservice.yaml" overwrite="true"/>
+                    </tasks>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+  </profiles>
+
 
 </project>

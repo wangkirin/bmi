@@ -24,3 +24,15 @@ cse:
   service:
     registry:
       address: http://127.0.0.1:30100
+  handler:
+    chain:
+      Consumer:
+        default: loadbalance
+  loadbalance:
+    retryEnabled: true
+    retryOnSame: 1
+    retryOnNext: 1
+
+servicecomb:
+  tracing:
+    enabled: false

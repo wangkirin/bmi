@@ -21,11 +21,11 @@
   <parent>
     <artifactId>bmi</artifactId>
     <groupId>io.servicecomb.samples</groupId>
-    <version>0.3.0</version>
+    <version>0.4.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>bmi-calculator</artifactId>
+  <artifactId>calculator</artifactId>
 
   <dependencies>
     <dependency>
@@ -54,10 +54,35 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.servicecomb</groupId>
+      <artifactId>handler-flowcontrol-qps</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.servicecomb</groupId>
+      <artifactId>handler-bizkeeper</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.servicecomb</groupId>
+      <artifactId>handler-tracing-zipkin</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>com.github.odavid.maven.plugins</groupId>
+        <artifactId>mixin-maven-plugin</artifactId>
+        <configuration>
+          <mixins>
+            <mixin>
+              <groupId>io.servicecomb.samples</groupId>
+              <artifactId>docker-build-config</artifactId>
+              <version>0.4.0-SNAPSHOT</version>
+            </mixin>
+          </mixins>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -67,31 +92,31 @@
 
   <profiles>
     <profile>
-      <id>flowcontrol</id>
-      <dependencies>
-        <dependency>
-          <groupId>io.servicecomb</groupId>
-          <artifactId>handler-flowcontrol-qps</artifactId>
-        </dependency>
-      </dependencies>
+      <id>docker</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.commonjava.maven.plugins</groupId>
+            <artifactId>directory-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
     <profile>
-      <id>bizkeeper</id>
-      <dependencies>
-        <dependency>
-          <groupId>io.servicecomb</groupId>
-          <artifactId>handler-bizkeeper</artifactId>
-        </dependency>
-      </dependencies>
+      <id>HuaweiCloud</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <version>1.8</version>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
-    <profile>
-      <id>tracing</id>
-      <dependencies>
-        <dependency>
-          <groupId>io.servicecomb</groupId>
-          <artifactId>handler-tracing-zipkin</artifactId>
-        </dependency>
-      </dependencies>
-    </profile>
+
   </profiles>
 </project>
