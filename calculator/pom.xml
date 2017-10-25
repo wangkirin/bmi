@@ -21,7 +21,7 @@
   <parent>
     <artifactId>bmi</artifactId>
     <groupId>io.servicecomb.samples</groupId>
-    <version>0.3.0</version>
+    <version>0.4.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -66,6 +66,10 @@
       <groupId>io.servicecomb</groupId>
       <artifactId>handler-tracing-zipkin</artifactId>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -78,7 +82,7 @@
             <mixin>
               <groupId>io.servicecomb.samples</groupId>
               <artifactId>docker-build-config</artifactId>
-              <version>0.3.0</version>
+              <version>0.4.0-SNAPSHOT</version>
             </mixin>
           </mixins>
         </configuration>
@@ -117,6 +121,5 @@
         </plugins>
       </build>
     </profile>
-
   </profiles>
 </project>

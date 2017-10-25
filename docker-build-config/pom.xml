@@ -21,7 +21,7 @@
   <parent>
     <groupId>io.servicecomb.samples</groupId>
     <artifactId>bmi</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -41,7 +41,7 @@
                 <build>
                   <from>openjdk:8-jre-alpine</from>
                   <ports>
-                    <port>7777</port>
+                    <port>8081</port>
                     <port>8888</port>
                   </ports>
                   <assembly>

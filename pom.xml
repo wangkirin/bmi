@@ -27,13 +27,14 @@
 
   <groupId>io.servicecomb.samples</groupId>
   <artifactId>bmi</artifactId>
-  <version>0.3.0</version>
+  <version>0.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
     <module>calculator</module>
     <module>webapp</module>
     <module>docker-build-config</module>
+    <module>integration-tests</module>
   </modules>
 
   <name>bmi</name>
@@ -64,17 +65,17 @@
       <dependency>
         <groupId>io.servicecomb.samples</groupId>
         <artifactId>calculator</artifactId>
-        <version>0.3.0</version>
+        <version>0.4.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>io.servicecomb.samples</groupId>
         <artifactId>webapp</artifactId>
-        <version>0.3.0</version>
+        <version>0.4.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>io.servicecomb.samples</groupId>
         <artifactId>docker-build-config</artifactId>
-        <version>0.3.0</version>
+        <version>0.4.0-SNAPSHOT</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
