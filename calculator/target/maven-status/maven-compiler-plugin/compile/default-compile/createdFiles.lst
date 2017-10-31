@@ -1,0 +1,6 @@
+io/servicecomb/samples/bmi/CalculatorEndpoint.class
+io/servicecomb/samples/bmi/CalculatorServiceImpl.class
+io/servicecomb/samples/bmi/CalculatorApplication.class
+io/servicecomb/samples/bmi/HalfCalculatorServiceImpl.class
+io/servicecomb/samples/bmi/CalculatorRestEndpoint.class
+io/servicecomb/samples/bmi/CalculatorService.class
