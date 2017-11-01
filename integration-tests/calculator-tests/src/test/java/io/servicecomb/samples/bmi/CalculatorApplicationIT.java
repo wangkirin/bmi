@@ -22,7 +22,7 @@ public class CalculatorApplicationIT {
 
   @Test
   public void getCalculatorResult() {
-    String serviceAddress = "http://localhost:8081";
+    String serviceAddress = "http://localhost:808100";
     ResponseEntity<Double> responseEntity = restTemplate.getForEntity(
         serviceAddress + "/bmi?height=170&weight=68",
         Double.class);
